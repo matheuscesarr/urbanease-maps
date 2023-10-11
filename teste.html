@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Mapa com informações de estabelecimentos</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9eiymZ1Ayi07gffb3_WDJdQd0pa95pg&libraries=places&callback=initMap"></script>
+
+  <script>
+    function initMap() {
+      // Cria um novo mapa
+      var map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 10,
+        center: { lat: -23.5503, lng: -46.6362 }
+      });
+
+      // Adiciona um marcador para cada estabelecimento
+      var markers = [
+        {
+          name: "Bar do Zé",
+          address: "Rua das Flores, 123",
+          lat: -23.5503,
+          lng: -46.6362
+        },
+        {
+          name: "Restaurante do João",
+          address: "Avenida dos Ipês, 456",
+          lat: -23.5513,
+          lng: -46.6372
+        },
+        {
+          name: "Loja da Maria",
+          address: "Rua das Palmeiras, 789",
+          lat: -23.5523,
+          lng: -46.6382
+        }
+      ];
+
+      for (var i = 0; i < markers.length; i++) {
+        // Cria um marcador
+        var marker = new google.maps.Marker({
+          position: { lat: markers[i].lat, lng: markers[i].lng },
+          map: map
+        });
+
+        // Adiciona um evento de clique ao marcador
+        marker.addListener("click", function() {
+          // Exibe um alert com as informações do estabelecimento
+          alert(marker.getTitle() + " - " + markers[i].address);
+        });
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="map"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Mapa do Bing com informações de estabelecimentos</title>
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Avj9jNMRnCdT4so3Ss8MpNRrUDtTXUuaj90n5QKnSOtmUiUyuVE4AIDwBP6MnFvc'></script>
+    <script type='text/javascript'>
+        function GetMap() {
+            var map = new Microsoft.Maps.Map('#myMap', {
+                credentials: 'Avj9jNMRnCdT4so3Ss8MpNRrUDtTXUuaj90n5QKnSOtmUiUyuVE4AIDwBP6MnFvc'
+            });
+
+            // Adicione um pino ao mapa
+            var pin = new Microsoft.Maps.Pushpin(map.getCenter(), null);
+            map.entities.push(pin);
+
+            // Adicione um evento de clique ao pino
+            Microsoft.Maps.Events.addHandler(pin, 'click', function () {
+                // Exiba informações sobre o estabelecimento em um alerta
+                alert('Nome do estabelecimento: Nome do Estabelecimento\nEndereço: Endereço do Estabelecimento');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:800px;height:600px;"></div>
+</body>
+</html>
